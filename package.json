@@ -2,8 +2,7 @@
   "name": "js-palette-extraction",
   "version": "1.0.0",
   "description": "Extract the dominnat color palette from a given image.",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rharel/js-palette-extraction.git"
@@ -18,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/rharel/js-palette-extraction/issues"
   },
-  "homepage": "https://github.com/rharel/js-palette-extraction#readme"
+  "homepage": "https://github.com/rharel/js-palette-extraction#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1"
+  }
 }
