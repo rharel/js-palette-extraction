@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Extract the dominnat color palette from a given image.",
   "scripts": {
-    "build": "babel sources -d distribution",
+    "build": "babel sources -d distribution/babel",
     "optimize": "node_modules/.bin/r.js.cmd -o build.js"
   },
   "repository": {
