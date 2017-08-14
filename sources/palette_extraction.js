@@ -92,6 +92,21 @@
                   return convert_color.hsl_to_rgb(h, s, l);
               });
     }
+    // Returns a sorted list of colors (rgb) in decreasing order of significance.
+    function extract_palette_from_image(image, palette_size, cell_size)
+    {
+        const canvas  = document.createElement('canvas'),
+              context = canvas.getContext('2d');
+
+        canvas.width  = image.naturalWidth;
+        canvas.height = image.naturalHeight;
+
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+        const image_data = context.getImageData(0, 0, canvas.width, canvas.height);
+
+        return extract_palette_from_image_data(image_data, palette_size, cell_size);
+    }
     // Loads an image and invokes the success callback with a sorted list of colors (rgb) in
     // decreasing order of significance.
     function extract_palette_from_url(url, palette_size, cell_size, on_success, on_error)
@@ -100,23 +115,10 @@
 
         image.addEventListener('error', on_error);
         image.addEventListener('load', () =>
-        {
-            const canvas  = document.createElement('canvas'),
-                  context = canvas.getContext('2d');
-
-            canvas.width  = image.naturalWidth;
-            canvas.height = image.naturalHeight;
-
-            context.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-            const image_data = context.getImageData(0, 0, canvas.width, canvas.height);
-            const palette    = extract_palette_from_image_data(image_data, palette_size, cell_size);
-
-            on_success(palette);
-        });
+            on_success(extract_palette_from_image(image, palette_size, cell_size)));
 
         image.crossOrigin = "Anonymous";
-        image.src = url;
+        image.src         = url;
 
         return image;
     }
@@ -131,6 +133,7 @@
         return {
             from_samples:    extract_palette_from_samples,
             from_image_data: extract_palette_from_image_data,
+            from_image:      extract_palette_from_image,
             from_url:        extract_palette_from_url
         };
     });
