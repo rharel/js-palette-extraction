@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "jsx": "preserve",
+        "sourceMap": false,
+        "target": "es2015",
+        "lib": [
+            "DOM",
+            "es2021"
+        ],
+        "module": "es2020",
+        "moduleResolution": "node"
+    },
+    "include": [
+        "source/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

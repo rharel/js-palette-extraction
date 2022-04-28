@@ -1,8 +1,3 @@
-# IntelliJ
-.idea/
-
-# NPM
+.parcel-cache/
+distribution/
 node_modules/
-
-# Babel output
-distribution/babel/

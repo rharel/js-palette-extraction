@@ -1,29 +1,13 @@
 {
-  "name": "js-palette-extraction",
+  "name": "image-palette-extraction",
   "version": "1.0.0",
-  "description": "Extract the dominnat color palette from a given image.",
+  "description": "Extract the dominant color palette from a given image.",
   "scripts": {
-    "build": "babel sources -d distribution/babel",
-    "optimize": "node_modules/.bin/r.js.cmd -o build.js"
+    "demo:serve": "parcel --no-cache demo/demo.html --dist-dir distribution"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rharel/js-palette-extraction.git"
-  },
-  "keywords": [
-    "palette",
-    "extraction",
-    "image"
-  ],
-  "author": "Raoul Harel",
+  "author": "Raoul Harel <admin@rharel.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/rharel/js-palette-extraction/issues"
-  },
-  "homepage": "https://github.com/rharel/js-palette-extraction#readme",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.6.0",
-    "requirejs": "^2.3.4"
+    "parcel": "^2.5.0"
   }
 }
