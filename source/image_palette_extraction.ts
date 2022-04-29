@@ -12,10 +12,14 @@ export function palette_from_image_data(
 ): Color[] {
   // Collect color observations using jittered-grid super sampling.
   const samples_rgb: Color[] = [];
-  for (let x_min = 0; x_min < image_data.width; x_min += sampling_cell_size) {
+  for (
+    let x_min = 0;
+    x_min < image_data.width - sampling_cell_size;
+    x_min += sampling_cell_size
+  ) {
     for (
       let y_min = 0;
-      y_min < image_data.height;
+      y_min < image_data.height - sampling_cell_size;
       y_min += sampling_cell_size
     ) {
       const x = random_integer_in_range(x_min, x_min + sampling_cell_size);

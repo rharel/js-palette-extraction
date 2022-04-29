@@ -44,6 +44,15 @@ export function hsl_from_rgb(r: number, g: number, b: number): Color {
 //
 // Adapted from https://gist.github.com/mjackson/5311256
 export function rgb_from_hsl(h: number, s: number, l: number): Color {
+  function rgb_from_hue(p: number, q: number, t: number) {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1 / 6) return p + (q - p) * 6 * t;
+    if (t < 1 / 2) return q;
+    if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+    return p;
+  }
+
   let r = 0;
   let g = 0;
   let b = 0;
@@ -56,16 +65,6 @@ export function rgb_from_hsl(h: number, s: number, l: number): Color {
   else {
     const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
     const p = 2 * l - q;
-
-    function rgb_from_hue(p: number, q: number, t: number) {
-      if (t < 0) t += 1;
-      if (t > 1) t -= 1;
-      if (t < 1 / 6) return p + (q - p) * 6 * t;
-      if (t < 1 / 2) return q;
-      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-      return p;
-    }
-
     r = rgb_from_hue(p, q, h + 1 / 3);
     g = rgb_from_hue(p, q, h);
     b = rgb_from_hue(p, q, h - 1 / 3);
